@@ -1,0 +1,17 @@
+---
+import Reveal from './Reveal.tsx';
+import Divider from './motifs/Divider.astro';
+---
+
+<section id="our-story" class="section-grad-b section-divider px-6 py-24 sm:py-32">
+  <div class="mx-auto max-w-2xl text-center">
+    <Reveal client:visible>
+      <p class="font-sans text-xs tracking-[0.35em] uppercase text-leaf-700/80">Our Story</p>
+      <Divider class="mt-4 text-gold-500" />
+      <p class="font-display mt-8 text-2xl leading-relaxed text-ink sm:text-3xl">
+        [Add your story here &mdash; how you met, the proposal, or anything else you'd
+        like your guests to know. A few warm sentences is plenty.]
+      </p>
+    </Reveal>
+  </div>
+</section>

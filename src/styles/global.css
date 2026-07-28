@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Jost", sans-serif;
+
+  /* Palette drawn from a sage-green Indian wedding invitation card: olive
+     floral print, warm parchment center medallion, antique gold trim, and
+     small brick-rose flowers. */
+  --color-ivory: #f8f1de;
+  --color-ivory-deep: #efe3c2;
+
+  --color-blush-50: #f7e6e0;
+  --color-blush-100: #f0d0c6;
+  --color-blush-200: #e3ac9c;
+  --color-blush-300: #d38872;
+
+  --color-gold-50: #f8ecc9;
+  --color-gold-100: #f0dda0;
+  --color-gold-300: #d9b45c;
+  --color-gold-500: #b3862f;
+  --color-gold-600: #93691f;
+  --color-gold-700: #765316;
+
+  --color-leaf-50: #eef1e2;
+  --color-leaf-100: #dee4c4;
+  --color-leaf-300: #a8b87d;
+  --color-leaf-500: #798a55;
+  --color-leaf-600: #616f43;
+  --color-leaf-700: #4b5735;
+
+  --color-rose-50: #f6e2de;
+  --color-rose-100: #ecc4bd;
+  --color-rose-300: #cf8b7d;
+  --color-rose-500: #a8453a;
+  --color-rose-600: #8a372e;
+  --color-rose-700: #6b2b23;
+
+  --color-ink: #362b1f;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4,
+  .font-display {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+}
+
+@layer utilities {
+  .text-shadow-soft {
+    text-shadow: 0 2px 24px rgba(169, 132, 26, 0.18);
+  }
+
+  /* Alternating pink-to-green wash used on every section, so the page reads
+     as one continuous gradient rather than blocks of flat color. */
+  .section-grad-a {
+    background-image: linear-gradient(
+      to bottom,
+      var(--color-blush-50),
+      var(--color-ivory),
+      var(--color-leaf-50)
+    );
+  }
+
+  .section-grad-b {
+    background-image: linear-gradient(
+      to bottom,
+      var(--color-leaf-50),
+      var(--color-ivory),
+      var(--color-blush-50)
+    );
+  }
+
+  .section-divider {
+    border-top-width: 1px;
+    border-top-color: color-mix(in srgb, var(--color-gold-500) 55%, transparent);
+    box-shadow: 0 1px 0 0 color-mix(in srgb, var(--color-gold-500) 20%, transparent);
+  }
+}

@@ -1,0 +1,40 @@
+---
+import Reveal from './Reveal.tsx';
+import Divider from './motifs/Divider.astro';
+
+const items = [
+  { time: '10:00 AM', title: 'Wedding Ceremony', description: 'Beneath the pergola in the walled garden.' },
+  { time: '12:00 PM', title: 'Lunch', description: 'A relaxed lunch with family and friends before the evening.' },
+  { time: '5:00 PM', title: 'Cocktail Hour', description: 'Drinks and light bites in the Garden Ballroom foyer. [Placeholder — confirm timing.]' },
+  { time: '6:30 PM', title: 'Dinner & Toasts', description: 'Dinner service, followed by toasts from family. [Placeholder — confirm timing.]' },
+  { time: '8:00 PM', title: 'Dancing', description: 'Music and dancing under the chandeliers. [Placeholder — confirm timing.]' },
+  { time: '10:00 PM', title: 'Send-Off', description: 'A joyful close to the evening. [Placeholder — confirm timing.]' },
+] as const;
+---
+
+<section id="agenda" class="section-grad-b section-divider px-6 py-24 sm:py-32">
+  <div class="mx-auto max-w-2xl">
+    <Reveal client:visible className="text-center">
+      <p class="font-sans text-xs tracking-[0.35em] uppercase text-leaf-700/80">Saturday, November 14</p>
+      <Divider class="mt-4 text-gold-500" />
+      <h2 class="font-display mt-6 text-4xl text-ink sm:text-5xl">The Day&rsquo;s Agenda</h2>
+      <p class="mt-4 font-sans text-sm text-ink/60">
+        Ceremony and lunch times are confirmed; evening reception times below are
+        placeholders until the final run-of-show is set.
+      </p>
+    </Reveal>
+
+    <div class="relative mt-16 ml-3 border-l border-gold-500/30 pl-8 sm:ml-6">
+      {
+        items.map((item, i) => (
+          <Reveal client:visible delay={i * 0.08} className="relative pb-10 last:pb-0">
+            <span class="absolute -left-[38px] top-1 h-3 w-3 rounded-full border-2 border-gold-500 bg-ivory sm:-left-[42px]" />
+            <p class="font-sans text-xs tracking-[0.2em] uppercase text-gold-700">{item.time}</p>
+            <h3 class="font-display mt-1 text-2xl text-ink">{item.title}</h3>
+            <p class="mt-1 font-sans text-sm text-ink/75">{item.description}</p>
+          </Reveal>
+        ))
+      }
+    </div>
+  </div>
+</section>

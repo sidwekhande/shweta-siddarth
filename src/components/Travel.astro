@@ -1,0 +1,35 @@
+---
+import Reveal from './Reveal.tsx';
+import Divider from './motifs/Divider.astro';
+---
+
+<section id="travel" class="section-grad-b section-divider px-6 py-24 sm:py-32">
+  <div class="mx-auto max-w-3xl text-center">
+    <Reveal client:visible>
+      <p class="font-sans text-xs tracking-[0.35em] uppercase text-leaf-700/80">Travel &amp; Stay</p>
+      <Divider class="mt-4 text-gold-500" />
+      <h2 class="font-display mt-6 text-4xl text-ink sm:text-5xl">Getting There</h2>
+    </Reveal>
+
+    <Reveal client:visible delay={0.1}>
+      <div class="mt-12 grid gap-8 text-left sm:grid-cols-2">
+        <div class="rounded-2xl border border-gold-500/20 bg-white/60 p-6">
+          <h3 class="font-display text-xl text-ink">On the Estate</h3>
+          <p class="mt-2 font-sans text-sm leading-relaxed text-ink/80">
+            Harding Allen Estate operates as a small bed and breakfast with a handful
+            of rooms and a cottage on-site. If you'd like to stay right on the grounds,
+            [add booking details / contact info here].
+          </p>
+        </div>
+        <div class="rounded-2xl border border-gold-500/20 bg-white/60 p-6">
+          <h3 class="font-display text-xl text-ink">Nearby</h3>
+          <p class="mt-2 font-sans text-sm leading-relaxed text-ink/80">
+            Barre is about 20 minutes from Worcester, MA, where you'll find more hotel
+            options. [Add your recommended hotel names, links, and any room-block or
+            discount code here.]
+          </p>
+        </div>
+      </div>
+    </Reveal>
+  </div>
+</section>

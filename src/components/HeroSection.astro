@@ -1,0 +1,12 @@
+---
+import Hero from './Hero.tsx';
+---
+
+<section class="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-blush-50 via-ivory to-leaf-50">
+  <Hero client:load />
+
+  <div class="absolute bottom-10 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-ink/40">
+    <span class="font-sans text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+    <span class="h-8 w-px bg-ink/30"></span>
+  </div>
+</section>

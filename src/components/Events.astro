@@ -1,0 +1,50 @@
+---
+import Reveal from './Reveal.tsx';
+import Divider from './motifs/Divider.astro';
+import EventCard from './EventCard.astro';
+---
+
+<section id="events" class="section-grad-a section-divider px-6 py-24 sm:py-32">
+  <div class="mx-auto max-w-6xl">
+    <Reveal client:visible className="text-center">
+      <p class="font-sans text-xs tracking-[0.35em] uppercase text-leaf-700/80">The Celebrations</p>
+      <Divider class="mt-4 text-gold-500" />
+      <h2 class="font-display mt-6 text-4xl text-ink sm:text-5xl">Two Days, Three Moments</h2>
+    </Reveal>
+
+    <div class="mt-16 grid gap-8 md:grid-cols-3">
+      <Reveal client:visible delay={0}>
+        <EventCard
+          eyebrow="Friday Evening"
+          title="Mehendi"
+          date="November 13, 2026"
+          time="4:00 – 7:00 PM"
+          place="Harding Allen Estate"
+          description="An evening of henna, color, and music to kick off the celebrations — come comfortable and ready to dance."
+        />
+      </Reveal>
+
+      <Reveal client:visible delay={0.12}>
+        <EventCard
+          eyebrow="Saturday Morning"
+          title="Wedding Ceremony"
+          date="November 14, 2026"
+          time="10:00 AM – 12:00 PM"
+          place="The Walled Garden, Harding Allen Estate"
+          description="Our ceremony takes place beneath the pergola in the estate's English walled garden, followed by lunch with our guests."
+        />
+      </Reveal>
+
+      <Reveal client:visible delay={0.24}>
+        <EventCard
+          eyebrow="Saturday Evening"
+          title="Reception"
+          date="November 14, 2026"
+          time="5:00 – 10:00 PM"
+          place="The Garden Ballroom, Harding Allen Estate"
+          description="An evening of dinner and dancing under the chandeliers of the Garden Ballroom."
+        />
+      </Reveal>
+    </div>
+  </div>
+</section>

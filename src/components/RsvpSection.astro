@@ -1,0 +1,20 @@
+---
+import Reveal from './Reveal.tsx';
+import Divider from './motifs/Divider.astro';
+import Rsvp from './Rsvp.tsx';
+---
+
+<section id="rsvp" class="section-grad-b section-divider relative overflow-hidden px-6 py-24 sm:py-32">
+  <div class="relative mx-auto max-w-xl">
+    <Reveal client:visible className="text-center">
+      <p class="font-sans text-xs tracking-[0.35em] uppercase text-leaf-700/80">RSVP</p>
+      <Divider class="mt-4 text-gold-500" />
+      <h2 class="font-display mt-6 text-4xl text-ink sm:text-5xl">Kindly Reply</h2>
+      <p class="mt-4 font-sans text-sm text-ink/70">We'd love to know which celebrations we'll see you at.</p>
+    </Reveal>
+
+    <div class="mt-12">
+      <Rsvp client:visible />
+    </div>
+  </div>
+</section>
