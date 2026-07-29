@@ -20,6 +20,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: withastro/action@v3
+        with:
+          node-version: 22
         env:
           PUBLIC_GAS_URL: ${{ vars.PUBLIC_GAS_URL }}
 

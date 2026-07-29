@@ -1,0 +1,52 @@
+<svg viewBox="0 0 100 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- outer paisley outline -->
+  <path
+    d="M50 163 C 28 163 16 145 17 122 C 11 102 12 81 24 66 C 16 56 16 46 25 38 C 36 28 50 28 59 36 C 54 42 55 49 63 50 C 73 51 80 44 78 35 C 85 42 87 53 80 60 C 74 66 66 61 65 53 C 74 56 81 68 79 82 C 85 100 83 120 74 138 C 68 150 60 158 50 163 Z"
+    stroke="#6b2b23"
+    stroke-width="1.4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- inner beaded / scalloped echo -->
+  <path
+    d="M50 152 C 34 152 25 138 26 120 C 21 104 22 88 31 76 C 25 68 25 60 32 54 C 40 47 50 47 56 53 C 52 57 53 62 59 63 C 66 64 71 59 70 52 C 75 57 76 65 71 70 C 67 74 61 71 60 65 C 67 67 72 76 71 87 C 75 100 73 115 67 128 C 63 137 57 144 50 152 Z"
+    stroke="#8a372e"
+    stroke-width="0.9"
+    stroke-dasharray="1.6 2.4"
+    stroke-linecap="round"
+  />
+
+  <!-- layered interior leaves -->
+  <path
+    d="M48 140 C 36 130 32 112 37 95 C 40 84 45 75 48 66 C 51 75 56 84 59 95 C 64 112 60 130 48 140 Z"
+    stroke="#8a372e"
+    stroke-width="0.9"
+    opacity="0.85"
+  />
+  <path
+    d="M48 132 C 39 124 36 110 40 96 C 43 87 46 80 48 72 C 50 80 53 87 56 96 C 60 110 57 124 48 132 Z"
+    stroke="#8a372e"
+    stroke-width="0.8"
+    opacity="0.85"
+  />
+  <path
+    d="M48 124 C 41 118 39 108 42 98 C 44 91 46 86 48 80 C 50 86 52 91 54 98 C 57 108 55 118 48 124 Z"
+    stroke="#8a372e"
+    stroke-width="0.7"
+    opacity="0.85"
+  />
+
+  <!-- small tendrils -->
+  <path d="M22 100 c -5 -3 -9 0 -10 5" stroke="#8a372e" stroke-width="0.8" stroke-linecap="round" opacity="0.75" />
+  <path d="M78 95 c 5 -3 9 0 10 5" stroke="#8a372e" stroke-width="0.8" stroke-linecap="round" opacity="0.75" />
+
+  <!-- small flower at the base -->
+  <g opacity="0.9">
+    <ellipse cx="46" cy="146" rx="2.6" ry="1.8" fill="#93691f" transform="rotate(20 46 146)" />
+    <ellipse cx="54" cy="146" rx="2.6" ry="1.8" fill="#93691f" transform="rotate(-20 54 146)" />
+    <ellipse cx="50" cy="142" rx="1.8" ry="2.6" fill="#93691f" />
+    <ellipse cx="50" cy="150" rx="1.8" ry="2.6" fill="#93691f" />
+    <circle cx="50" cy="146" r="1.6" fill="#6b2b23" />
+  </g>
+</svg>

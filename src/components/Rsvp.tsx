@@ -3,25 +3,27 @@ import { useState, type FormEvent } from 'react';
 const GAS_URL = import.meta.env.PUBLIC_GAS_URL;
 
 const EVENTS = [
-  { key: 'mehendi', label: 'Mehendi — Fri, Nov 13' },
-  { key: 'ceremony', label: 'Wedding Ceremony — Sat, Nov 14 (AM)' },
-  { key: 'reception', label: 'Reception — Sat, Nov 14 (PM)' },
+  { key: 'mehendi', label: 'Mehendi', sub: 'Fri, Nov 13' },
+  { key: 'ceremony', label: 'Wedding Ceremony', sub: 'Sat, Nov 14 (AM)' },
+  { key: 'reception', label: 'Reception', sub: 'Sat, Nov 14 (PM)' },
 ] as const;
+
+type EventKey = (typeof EVENTS)[number]['key'];
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
 export default function Rsvp() {
   const [name, setName] = useState('');
-  const [guests, setGuests] = useState(1);
-  const [attending, setAttending] = useState<Record<string, boolean>>({
-    mehendi: false,
-    ceremony: false,
-    reception: false,
+  const [eventGuests, setEventGuests] = useState<Record<EventKey, number>>({
+    mehendi: 0,
+    ceremony: 0,
+    reception: 0,
   });
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState<Status>('idle');
 
-  const toggle = (key: string) => setAttending((prev) => ({ ...prev, [key]: !prev[key] }));
+  const setCount = (key: EventKey, value: number) =>
+    setEventGuests((prev) => ({ ...prev, [key]: Math.max(0, value) }));
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -45,10 +47,9 @@ export default function Rsvp() {
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify({
           name: name.trim(),
-          guests,
-          mehendi: attending.mehendi ? 'Yes' : 'No',
-          ceremony: attending.ceremony ? 'Yes' : 'No',
-          reception: attending.reception ? 'Yes' : 'No',
+          mehendiGuests: eventGuests.mehendi,
+          ceremonyGuests: eventGuests.ceremony,
+          receptionGuests: eventGuests.reception,
           message: message.trim(),
         }),
       });
@@ -87,36 +88,27 @@ export default function Rsvp() {
 
       <fieldset className="mt-6">
         <legend className="font-sans text-xs tracking-[0.2em] uppercase text-ink/70">
-          Will you be joining us?
+          Number of guests attending each event (0 if not attending)
         </legend>
-        <div className="mt-3 space-y-2">
+        <div className="mt-3 space-y-3">
           {EVENTS.map((ev) => (
-            <label key={ev.key} className="flex items-center gap-3 font-sans text-sm text-ink/90">
+            <div key={ev.key} className="flex items-center justify-between gap-4">
+              <div>
+                <p className="font-sans text-sm text-ink/90">{ev.label}</p>
+                <p className="font-sans text-xs text-ink/50">{ev.sub}</p>
+              </div>
               <input
-                type="checkbox"
-                checked={attending[ev.key]}
-                onChange={() => toggle(ev.key)}
-                className="h-4 w-4 rounded border-ink/30 text-gold-600 focus:ring-gold-500"
+                type="number"
+                min={0}
+                max={20}
+                value={eventGuests[ev.key]}
+                onChange={(e) => setCount(ev.key, Number(e.target.value))}
+                className="w-20 rounded-lg border border-ink/15 bg-ivory px-3 py-2 text-center font-sans text-sm text-ink outline-none focus:border-gold-500"
               />
-              {ev.label}
-            </label>
+            </div>
           ))}
         </div>
       </fieldset>
-
-      <div className="mt-6">
-        <label className="font-sans text-xs tracking-[0.2em] uppercase text-ink/70">
-          Number of Guests (incl. you)
-        </label>
-        <input
-          type="number"
-          min={1}
-          max={10}
-          value={guests}
-          onChange={(e) => setGuests(Number(e.target.value))}
-          className="mt-2 w-24 rounded-lg border border-ink/15 bg-ivory px-4 py-2.5 font-sans text-sm text-ink outline-none focus:border-gold-500"
-        />
-      </div>
 
       <div className="mt-6">
         <label className="font-sans text-xs tracking-[0.2em] uppercase text-ink/70">Message (optional)</label>

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import PageBorders from '../components/PageBorders.astro';
 
 interface Props {
   title?: string;
@@ -29,6 +30,7 @@ const {
     />
   </head>
   <body>
+    <PageBorders />
     <slot />
   </body>
 </html>
