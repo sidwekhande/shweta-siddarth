@@ -1,7 +1,6 @@
 # Shweta & Siddarth — Wedding Website
 
-A single-page wedding site for the Mehendi, Ceremony, and Reception at Harding
-Allen Estate, Barre, MA (November 13–14, 2026). Built with Astro, Tailwind
+A single-page wedding site. Built with Astro, Tailwind
 CSS, and Framer Motion; deployed free on GitHub Pages; RSVPs saved to a
 Google Sheet via Apps Script.
 
