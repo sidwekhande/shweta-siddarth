@@ -3,15 +3,17 @@ import Hero from './Hero.tsx';
 import FloralBanner from './FloralBanner.tsx';
 ---
 
-<section id="home" class="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-blush-50 via-ivory to-leaf-50">
-  <div class="pointer-events-none absolute inset-x-0 top-0 z-0 mx-auto w-full max-w-4xl opacity-80 aspect-[900/240]">
-    <FloralBanner client:only="react" />
-  </div>
+<section id="home" class="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-blush-50 via-ivory to-leaf-50 px-4 py-16">
+  <div class="flex w-full max-w-4xl flex-col items-center gap-4 sm:gap-8 lg:gap-12">
+    <div class="pointer-events-none w-full max-w-xs opacity-80 aspect-[900/240] sm:max-w-xl lg:max-w-4xl">
+      <FloralBanner client:only="react" />
+    </div>
 
-  <Hero client:load />
+    <Hero client:load />
 
-  <div class="pointer-events-none absolute inset-x-0 bottom-0 z-0 mx-auto w-full max-w-4xl -scale-y-100 opacity-80 aspect-[900/240]">
-    <FloralBanner client:only="react" />
+    <div class="pointer-events-none w-full max-w-xs -scale-y-100 opacity-80 aspect-[900/240] sm:max-w-xl lg:max-w-4xl">
+      <FloralBanner client:only="react" />
+    </div>
   </div>
 
   <div class="absolute bottom-10 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-ink/40">
