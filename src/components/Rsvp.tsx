@@ -88,7 +88,7 @@ export default function Rsvp() {
 
       <fieldset className="mt-6">
         <legend className="font-sans text-xs tracking-[0.2em] uppercase text-ink/70">
-          Number of guests attending each event (0 if not attending)
+          Number of guests attending each event
         </legend>
         <div className="mt-3 space-y-3">
           {EVENTS.map((ev) => (

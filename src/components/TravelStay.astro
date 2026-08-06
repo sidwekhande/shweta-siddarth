@@ -7,10 +7,10 @@ const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComp
 const mapsEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
 ---
 
-<section id="venue" class="section-grad-a section-divider relative overflow-hidden px-6 py-24 sm:py-32">
+<section id="travel" class="section-grad-b section-divider px-6 py-24 sm:py-32">
   <div class="mx-auto max-w-5xl">
     <Reveal client:visible className="text-center">
-      <p class="font-sans text-xs tracking-[0.35em] uppercase text-leaf-700/80">The Venue</p>
+      <p class="font-sans text-xs tracking-[0.35em] uppercase text-leaf-700/80">Travel &amp; Stay</p>
       <Divider class="mt-4 text-gold-500" />
       <h2 class="font-display mt-6 text-4xl text-ink sm:text-5xl">Harding Allen Estate</h2>
     </Reveal>
@@ -18,18 +18,12 @@ const mapsEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(addres
     <div class="mt-12 grid gap-8 md:grid-cols-2">
       <Reveal client:visible>
         <div class="h-full rounded-3xl border border-gold-500/20 bg-white/60 p-8">
-          <p class="font-sans text-sm leading-relaxed text-ink/80">
+          <p class="font-sans text-base leading-relaxed text-ink/80">
             A neoclassical mansion built in the 1920s, set on grounds with English-style
             walled gardens, a lily pond, and a glass-walled garden ballroom &mdash; just
             outside Barre, Massachusetts.
           </p>
-          <p class="mt-4 font-sans text-sm tracking-[0.05em] text-ink/70">{address}</p>
-
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="rounded-full border border-leaf-500/40 px-3 py-1 font-sans text-xs text-leaf-700">Outdoor ceremony</span>
-            <span class="rounded-full border border-leaf-500/40 px-3 py-1 font-sans text-xs text-leaf-700">Garden ballroom</span>
-            <span class="rounded-full border border-leaf-500/40 px-3 py-1 font-sans text-xs text-leaf-700">New England fall</span>
-          </div>
+          <p class="mt-4 font-sans text-base tracking-[0.05em] text-ink/70">{address}</p>
 
           <a
             href={mapsUrl}
@@ -54,5 +48,27 @@ const mapsEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(addres
         </div>
       </Reveal>
     </div>
+
+    <Reveal client:visible delay={0.15} className="mt-8">
+      <div class="grid gap-8 text-left sm:grid-cols-2">
+        <div class="rounded-2xl border border-gold-500/20 bg-white/60 p-6">
+          <h3 class="font-display text-xl text-ink">Where to Stay</h3>
+          <p class="mt-2 font-sans text-base leading-relaxed text-ink/80">
+            Harding Allen Estate operates as a small bed and breakfast with a handful of
+            rooms and a cottage on-site &mdash; [add booking details / contact info here].
+            More hotel options are about 20 minutes away in Worcester, MA. [Add your
+            recommended hotel names, links, and any room-block or discount code here.]
+          </p>
+        </div>
+        <div class="rounded-2xl border border-gold-500/20 bg-white/60 p-6">
+          <h3 class="font-display text-xl text-ink">Things to Do Near Boston</h3>
+          <p class="mt-2 font-sans text-base leading-relaxed text-ink/80">
+            Boston is about an hour east of the venue &mdash; a good option if you're
+            making a weekend of it. [Add your own recommendations here: favorite
+            neighborhoods, restaurants, museums, or day trips.]
+          </p>
+        </div>
+      </div>
+    </Reveal>
   </div>
 </section>

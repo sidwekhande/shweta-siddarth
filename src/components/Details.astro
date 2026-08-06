@@ -4,23 +4,13 @@ import Divider from './motifs/Divider.astro';
 
 const items = [
   {
-    title: 'Attire',
-    description:
-      "Mehendi: vibrant colors, comfortable Indian attire. Ceremony: traditional Indian attire, semi-formal. Reception: formal — Indian or Western formalwear both welcome. [Edit to match your preferences.]",
-  },
-  {
     title: 'Weather',
     description:
       'Mid-November in Massachusetts is crisp. The ceremony is outdoors in the walled garden with an indoor backup — bring a light coat for the morning.',
   },
   {
-    title: 'Getting There',
-    description:
-      "Harding Allen Estate is about 20 minutes from Worcester, MA. See Travel & Stay above for accommodation options.",
-  },
-  {
-    title: 'Plus-Ones & Kids',
-    description: '[Edit this with your own plus-one / children policy — the RSVP form can be adjusted to match.]',
+    title: 'Parking',
+    description: '[Add on-site parking details here — if shuttles are arranged, this can become the shuttle schedule instead.]',
   },
 ] as const;
 ---
@@ -40,7 +30,7 @@ const items = [
             <div class="h-full rounded-2xl border border-gold-500/20 bg-white/60 p-6">
               <h3 class="font-display text-xl text-ink">{item.title}</h3>
               <span class="mt-2 block h-px w-10 bg-gold-500/50" />
-              <p class="mt-3 font-sans text-sm leading-relaxed text-ink/80">{item.description}</p>
+              <p class="mt-3 font-sans text-base leading-relaxed text-ink/80">{item.description}</p>
             </div>
           </Reveal>
         ))
