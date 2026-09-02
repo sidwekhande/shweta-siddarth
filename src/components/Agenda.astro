@@ -1,34 +1,42 @@
 ---
 import Reveal from './Reveal.tsx';
 import Divider from './motifs/Divider.astro';
+import KouzCircle from './KouzCircle.tsx';
 
 const items = [
-  { time: '10:00 AM', title: 'Wedding Ceremony', description: 'Beneath the pergola in the walled garden.' },
+  { time: '9:30 AM', title: 'Wedding Ceremony', description: 'On the stage backed by a row of pillars in the walled garden.' },
   { time: '12:00 PM', title: 'Lunch', description: 'A relaxed lunch with family and friends before the evening.' },
-  { time: '5:00 PM', title: 'Cocktail Hour', description: 'Drinks and light bites in the Garden Ballroom foyer. [Placeholder — confirm timing.]' },
-  { time: '6:30 PM', title: 'Dinner & Toasts', description: 'Dinner service, followed by toasts from family. [Placeholder — confirm timing.]' },
-  { time: '8:00 PM', title: 'Dancing', description: 'Music and dancing under the chandeliers. [Placeholder — confirm timing.]' },
-  { time: '10:00 PM', title: 'Send-Off', description: 'A joyful close to the evening. [Placeholder — confirm timing.]' },
+  { time: '1:00 PM', title: 'Break', description: 'Rest, get changed into your evening attire, and enjoy light snacks and games.' },
+  { time: '4:30 PM', title: 'Cocktail Hour', description: 'Drinks and light bites in the Grand Ballroom foyer.' },
+  { time: '5:00 PM', title: 'Toast & Performances', description: 'Speeches and performances from family and friends.' },
+  { time: '7:00 PM', title: 'Dinner', description: 'Dinner service in the Grand Ballroom.' },
+  { time: '8:00 PM', title: 'Dancing', description: 'Music and dancing under the chandeliers.' },
+  { time: '10:00 PM', title: 'Send-Off', description: 'A joyful close to the evening.' },
+  { time: '10:30 PM', title: 'After Party', description: 'The celebration continues for the night owls.' },
 ] as const;
 ---
 
-<section id="agenda" class="section-grad-a section-divider px-6 py-24 sm:py-32">
-  <div class="mx-auto max-w-2xl">
+<section id="agenda" class="section-grad-a section-divider relative px-6 py-24 sm:py-32">
+  <div class="pointer-events-none absolute left-0 top-[200px] z-0 hidden aspect-square w-180 -translate-x-[40%] sm:block">
+    <KouzCircle client:only="react" />
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-2xl">
     <Reveal client:visible className="text-center">
       <p class="font-sans text-xs tracking-[0.35em] uppercase text-leaf-700/80">Saturday, November 14</p>
       <Divider class="mt-4 text-gold-500" />
       <h2 class="font-display mt-6 text-4xl text-ink sm:text-5xl">The Day&rsquo;s Agenda</h2>
-      <p class="mt-4 font-sans text-base text-ink/60">
-        Ceremony and lunch times are confirmed; evening reception times below are
-        placeholders until the final run-of-show is set.
-      </p>
     </Reveal>
 
-    <div class="relative mt-16 ml-3 border-l border-gold-500/30 pl-8 sm:ml-6">
+    <div class="relative mt-16 ml-3 sm:ml-6">
       {
         items.map((item, i) => (
-          <Reveal client:visible delay={i * 0.08} className="relative pb-10 last:pb-0">
-            <span class="absolute -left-[38px] top-1 h-3 w-3 rounded-full border-2 border-gold-500 bg-ivory sm:-left-[42px]" />
+          <Reveal
+            client:visible
+            delay={i * 0.08}
+            className={`relative pl-8 ${i === items.length - 1 ? 'pb-0' : 'border-l border-gold-500/30 pb-8'}`}
+          >
+            <span class="absolute -left-[6px] top-1 h-3 w-3 rounded-full border-2 border-gold-500 bg-ivory" />
             <p class="font-sans text-xs tracking-[0.2em] uppercase text-gold-700">{item.time}</p>
             <h3 class="font-display mt-1 text-2xl text-ink">{item.title}</h3>
             <p class="mt-1 font-sans text-base text-ink/75">{item.description}</p>

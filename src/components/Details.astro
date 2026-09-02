@@ -2,17 +2,93 @@
 import Reveal from './Reveal.tsx';
 import Divider from './motifs/Divider.astro';
 
-const items = [
+interface DetailItem {
+  title: string;
+  intro?: string;
+  description?: string;
+  list?: { name: string; location: string; query: string }[];
+  categories?: { label: string; items: { name: string; query: string }[] }[];
+}
+
+const mapsUrl = (query: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+
+const items: DetailItem[] = [
   {
     title: 'Weather',
     description:
       'Mid-November in Massachusetts is crisp. The ceremony is outdoors in the walled garden with an indoor backup — bring a light coat for the morning.',
   },
   {
-    title: 'Parking',
-    description: '[Add on-site parking details here — if shuttles are arranged, this can become the shuttle schedule instead.]',
+    title: 'Things to Do Near Boston',
+    intro: "Boston is about an hour east of the venue, a good option if you're making a weekend of it.",
+    list: [
+      { name: 'Freedom Trail', location: 'Boston, MA', query: 'Freedom Trail, Boston, MA' },
+      { name: 'Quincy Market', location: 'Boston, MA', query: 'Quincy Market, Boston, MA' },
+      { name: 'Boston Common', location: 'Boston, MA', query: 'Boston Common, Boston, MA' },
+      { name: 'Fan Pier Park', location: 'Boston, MA', query: 'Fan Pier Park, Boston, MA' },
+      { name: 'Harvard Square', location: 'Cambridge, MA', query: 'Harvard Square, Cambridge, MA' },
+      {
+        name: 'Harvard Museum of Natural History',
+        location: 'Cambridge, MA',
+        query: 'Harvard Museum of Natural History, 26 Oxford St, Cambridge, MA',
+      },
+      { name: 'Charles River Esplanade', location: 'Cambridge, MA', query: 'Charles River Esplanade' },
+    ],
   },
-] as const;
+  {
+    title: 'Our Favorite Restaurants',
+    categories: [
+      {
+        label: 'Brunch Spots',
+        items: [
+          { name: 'The Paramount', query: 'The Paramount, 44 Charles St, Boston, MA' },
+          { name: 'Cafe Landwer', query: 'Cafe Landwer, 653 Boylston St, Boston, MA' },
+          { name: 'Tatte', query: 'Tatte Bakery & Cafe, 399 Boylston St, Boston, MA' },
+          { name: 'The Friendly Toast', query: 'The Friendly Toast, 35 Stanhope St, Boston, MA' },
+        ],
+      },
+      {
+        label: 'Bakery',
+        items: [
+          { name: 'Michette', query: 'Michette Bakery, 164 Broadway, Somerville, MA' },
+          { name: 'Levain Bakery', query: 'Levain Bakery, 180 Newbury St, Boston, MA' },
+          { name: "Bova's Bakery", query: "Bova's Bakery, 134 Salem St, Boston, MA" },
+        ],
+      },
+      {
+        label: 'Mexican',
+        items: [
+          { name: 'Lolita Cocina & Tequila Bar', query: 'Lolita Cocina & Tequila Bar, 271 Dartmouth St, Boston, MA' },
+          { name: 'bartaco', query: 'bartaco, 25 Thomson Pl, Boston, MA' },
+        ],
+      },
+      {
+        label: 'Asian',
+        items: [
+          { name: 'The Dumpling Cafe', query: 'Dumpling Cafe, 695 Washington St, Boston, MA' },
+          { name: 'Ruka', query: 'Ruka Restobar, 505 Washington St, Boston, MA' },
+          { name: 'All Seasons Table', query: 'All Seasons Table, 64 Pleasant St, Malden, MA' },
+          { name: 'Fuji', query: 'Fuji at Assembly, 320 Canal St, Somerville, MA' },
+        ],
+      },
+      {
+        label: 'Thai',
+        items: [
+          { name: 'Brown Sugar Cafe', query: 'Brown Sugar Cafe, 1033 Commonwealth Ave, Boston, MA' },
+          { name: 'Kala Thai Cookery', query: 'Kala Thai Cookery, 151 Hanover St, Boston, MA' },
+          { name: 'Thai Basil', query: 'Thai Basil, 132 Newbury St, Boston, MA' },
+        ],
+      },
+      {
+        label: 'Indian',
+        items: [
+          { name: 'The Treasury', query: 'The Treasury Indian and Greek Kitchen, 4A Wayside Rd, Burlington, MA' },
+          { name: 'Tashan', query: 'Tashan, 213 Burlington Rd, Bedford, MA' },
+        ],
+      },
+    ],
+  },
+];
 ---
 
 <section id="details" class="section-grad-a section-divider px-6 py-24 sm:py-32">
@@ -23,14 +99,59 @@ const items = [
       <h2 class="font-display mt-6 text-4xl text-ink sm:text-5xl">Helpful Details</h2>
     </Reveal>
 
-    <div class="mt-14 grid gap-6 sm:grid-cols-2">
+    <div class="mt-14 grid gap-6">
       {
         items.map((item, i) => (
           <Reveal client:visible delay={i * 0.08}>
             <div class="h-full rounded-2xl border border-gold-500/20 bg-white/60 p-6">
               <h3 class="font-display text-xl text-ink">{item.title}</h3>
               <span class="mt-2 block h-px w-10 bg-gold-500/50" />
-              <p class="mt-3 font-sans text-base leading-relaxed text-ink/80">{item.description}</p>
+              {item.description && (
+                <p class="mt-3 font-sans text-base leading-relaxed text-ink/80">{item.description}</p>
+              )}
+              {item.intro && (
+                <p class="mt-3 font-sans text-base leading-relaxed text-ink/80">{item.intro}</p>
+              )}
+              {item.list && (
+                <ul class="mt-3 list-disc space-y-1.5 pl-5 font-sans text-base leading-relaxed text-ink/80">
+                  {item.list.map((entry) => (
+                    <li>
+                      <a
+                        href={mapsUrl(entry.query)}
+                        target="_blank"
+                        rel="noreferrer"
+                        class="underline decoration-gold-500/40 underline-offset-2 transition-colors hover:text-gold-700"
+                      >
+                        {entry.name}
+                      </a>{' '}
+                      ({entry.location})
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {item.categories && (
+                <div class="mt-3 grid gap-4 sm:grid-flow-col sm:grid-rows-[auto_auto_auto] sm:grid-cols-2">
+                  {item.categories.map((category) => (
+                    <div>
+                      <p class="font-sans text-xs tracking-[0.2em] uppercase text-gold-700">{category.label}</p>
+                      <ul class="mt-1.5 list-disc space-y-1 pl-5 font-sans text-base leading-relaxed text-ink/80">
+                        {category.items.map((restaurant) => (
+                          <li>
+                            <a
+                              href={mapsUrl(restaurant.query)}
+                              target="_blank"
+                              rel="noreferrer"
+                              class="underline decoration-gold-500/40 underline-offset-2 transition-colors hover:text-gold-700"
+                            >
+                              {restaurant.name}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </Reveal>
         ))

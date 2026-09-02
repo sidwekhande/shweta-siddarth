@@ -2,14 +2,22 @@
 import Reveal from './Reveal.tsx';
 import Divider from './motifs/Divider.astro';
 import EventCard from './EventCard.astro';
+import SprigGrowing from './SprigGrowing.tsx';
 ---
 
-<section id="schedule" class="section-grad-b section-divider px-6 py-24 sm:py-32">
-  <div class="mx-auto max-w-6xl">
+<section id="schedule" class="section-grad-b section-divider relative px-6 py-24 sm:py-32">
+  <div class="relative z-0 mx-auto max-w-6xl">
+    <div class="pointer-events-none absolute left-0 top-[-10px] -z-10 hidden aspect-[407/193] w-56 sm:block md:w-[480px]">
+      <SprigGrowing client:only="react" />
+    </div>
+    <div class="pointer-events-none absolute right-0 top-[40px] -z-10 hidden aspect-[407/193] w-56 -scale-x-100 -scale-y-100 sm:block md:w-[460px]">
+      <SprigGrowing client:only="react" />
+    </div>
+
     <Reveal client:visible className="text-center">
       <p class="font-sans text-xs tracking-[0.35em] uppercase text-leaf-700/80">Schedule</p>
       <Divider class="mt-4 text-gold-500" />
-      <h2 class="font-display mt-6 text-4xl text-ink sm:text-5xl">Two Days, Three Moments</h2>
+      <h2 class="font-display mt-6 text-4xl text-ink sm:text-5xl">Two Days, Countless Memories</h2>
     </Reveal>
 
     <div class="mt-16 grid gap-8 md:grid-cols-3">
@@ -19,9 +27,9 @@ import EventCard from './EventCard.astro';
           title="Mehendi"
           date="November 13, 2026"
           time="4:00 – 7:00 PM"
-          place="Harding Allen Estate"
-          description="An evening of henna, color, and music to kick off the celebrations — come comfortable and ready to dance."
-          dressCode="Vibrant colors, comfortable Indian attire — no need for formal wear."
+          place="Outdoor Pavilion, Harding Allen Estate"
+          description="An evening of henna, color, and music to kick off the celebrations, come comfortable and ready to play games."
+          dressCode="Vibrant colors, Indian attire"
         />
       </Reveal>
 
@@ -30,10 +38,10 @@ import EventCard from './EventCard.astro';
           eyebrow="Saturday Morning"
           title="Wedding Ceremony"
           date="November 14, 2026"
-          time="10:00 AM – 12:00 PM"
+          time="9:30 AM – 12:00 PM"
           place="The Walled Garden, Harding Allen Estate"
-          description="Our ceremony takes place beneath the pergola in the estate's English walled garden, followed by lunch with our guests."
-          dressCode="Traditional Indian attire, semi-formal."
+          description="A beautiful blend of Kashmiri and Maharashtrian traditions in the estate's walled garden, followed by lunch with our guests."
+          dressCode="Pastels, Indian attire"
         />
       </Reveal>
 
@@ -43,9 +51,9 @@ import EventCard from './EventCard.astro';
           title="Reception"
           date="November 14, 2026"
           time="5:00 – 10:00 PM"
-          place="The Garden Ballroom, Harding Allen Estate"
-          description="An evening of dinner and dancing under the chandeliers of the Garden Ballroom."
-          dressCode="Formal — Indian or Western formalwear both welcome."
+          place="The Grand Ballroom, Harding Allen Estate"
+          description="An evening of drinks, dinner and dancing under the chandeliers of the Grand Ballroom."
+          dressCode="Black tie, Indo-Western attire"
         />
       </Reveal>
     </div>

@@ -1,0 +1,69 @@
+---
+const COLORS = ['text-blush-300', 'text-leaf-500', 'text-gold-500'];
+
+const LEAVES = Array.from({ length: 16 }).map((_, i) => {
+  const left = Math.round(Math.random() * 100);
+  const size = 12 + Math.round(Math.random() * 10);
+  const duration = 22 + Math.random() * 14;
+  const delay = -(Math.random() * duration);
+  const rotateStart = Math.round(Math.random() * 360);
+  const color = COLORS[i % COLORS.length];
+
+  // Net left-to-right drift: magnitude varies per leaf, distance grows each
+  // stop so the horizontal motion trends steadily rightward with a slight wobble.
+  const magnitude = 80 + Math.random() * 140;
+  const wobble = () => magnitude * (0.08 + Math.random() * 0.06);
+  const d1 = Math.round(magnitude * 0.3 + wobble());
+  const d2 = Math.round(magnitude * 0.55 - wobble());
+  const d3 = Math.round(magnitude * 0.8 + wobble());
+  const d4 = Math.round(magnitude * 1.05 - wobble());
+  const d5 = Math.round(magnitude * 1.3);
+
+  return { left, size, duration, delay, rotateStart, color, d1, d2, d3, d4, d5 };
+});
+---
+
+<div class="pointer-events-none fixed inset-0 z-10 overflow-hidden motion-reduce:hidden" aria-hidden="true">
+  {
+    LEAVES.map((leaf) => (
+      <svg
+        class={`falling-leaf absolute top-[-8vh] opacity-45 ${leaf.color}`}
+        style={`left:${leaf.left}%; width:${leaf.size}px; height:${leaf.size}px; --duration:${leaf.duration}s; --delay:${leaf.delay}s; --rot:${leaf.rotateStart}deg; --d1:${leaf.d1}px; --d2:${leaf.d2}px; --d3:${leaf.d3}px; --d4:${leaf.d4}px; --d5:${leaf.d5}px;`}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path d="M12 2C6 6 4 12 12 22C20 12 18 6 12 2Z" />
+      </svg>
+    ))
+  }
+</div>
+
+<style>
+  .falling-leaf {
+    animation: leaf-fall var(--duration) linear var(--delay) infinite;
+    transform: rotate(var(--rot));
+  }
+
+  /* Vertical stops grow at an easing power curve (10%, 29%, 53%, 82%, 115% of
+     the fall) to approximate gravity without a long near-motionless start. */
+  @keyframes leaf-fall {
+    0% {
+      transform: translate(0, 0) rotate(var(--rot));
+    }
+    20% {
+      transform: translate(var(--d1), 10vh) rotate(calc(var(--rot) + 60deg));
+    }
+    40% {
+      transform: translate(var(--d2), 29vh) rotate(calc(var(--rot) + 130deg));
+    }
+    60% {
+      transform: translate(var(--d3), 53vh) rotate(calc(var(--rot) + 210deg));
+    }
+    80% {
+      transform: translate(var(--d4), 82vh) rotate(calc(var(--rot) + 300deg));
+    }
+    100% {
+      transform: translate(var(--d5), 115vh) rotate(calc(var(--rot) + 400deg));
+    }
+  }
+</style>

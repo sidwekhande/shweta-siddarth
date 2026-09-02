@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import PageBorders from '../components/PageBorders.astro';
+import FallingLeaves from '../components/FallingLeaves.astro';
 import NavMenu from '../components/NavMenu.tsx';
 
 interface Props {
@@ -31,7 +31,7 @@ const {
     />
   </head>
   <body>
-    <PageBorders />
+    <FallingLeaves />
     <NavMenu client:load />
     <slot />
   </body>

@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 
 const LINKS = [
   { href: '#home', label: 'Home' },
-  { href: '#rsvp', label: 'RSVP' },
   { href: '#our-story', label: 'Our Story' },
   { href: '#schedule', label: 'Schedule' },
   { href: '#agenda', label: "Day's Agenda" },
@@ -11,6 +10,7 @@ const LINKS = [
   { href: '#details', label: 'Helpful Details' },
   { href: '#registry', label: 'Registry' },
   { href: '#countdown', label: 'Countdown' },
+  { href: '#rsvp', label: 'RSVP' },
 ];
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -75,7 +75,7 @@ export default function NavMenu() {
 
             <motion.nav
               key="drawer"
-              className="fixed inset-y-0 left-0 z-40 flex w-[280px] flex-col overflow-y-auto border-r border-gold-500/25 bg-ivory px-8 py-10 sm:w-[320px]"
+              className="fixed inset-y-0 left-0 z-40 flex w-[280px] flex-col overflow-y-auto border-r border-gold-500/25 bg-ivory px-8 pb-10 pt-24 sm:w-[320px]"
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}

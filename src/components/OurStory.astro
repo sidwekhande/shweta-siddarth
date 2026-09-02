@@ -1,16 +1,26 @@
 ---
 import Reveal from './Reveal.tsx';
 import Divider from './motifs/Divider.astro';
+import HisHerLine from './HisHerLine.tsx';
 ---
 
-<section id="our-story" class="section-grad-a section-divider px-6 py-24 sm:py-32">
-  <div class="mx-auto max-w-2xl text-center">
+<section id="our-story" class="section-grad-a section-divider relative px-6 py-24 sm:py-32">
+  <div class="relative z-10 mx-auto max-w-2xl text-center">
+    <div class="pointer-events-none absolute bottom-[-120px] left-[-290px] -z-10 aspect-[4/3] w-150">
+      <HisHerLine client:only="react" />
+    </div>
+
     <Reveal client:visible>
       <p class="font-sans text-xs tracking-[0.35em] uppercase text-leaf-700/80">Our Story</p>
       <Divider class="mt-4 text-gold-500" />
-      <p class="font-display mt-8 text-2xl leading-relaxed text-ink sm:text-3xl">
-        [Add your story here &mdash; how you met, the proposal, or anything else you'd
-        like your guests to know. A few warm sentences is plenty.]
+    </Reveal>
+
+    <Reveal client:visible delay={0.1} className="mt-8">
+      <p class="font-display text-2xl leading-relaxed text-ink sm:text-3xl">
+        It started with a Hinge match neither of us expected much from. One good
+        conversation, then another, then a hundred more. Somewhere along the way, "getting
+        to know each other" quietly became "forever," and we couldn't be happier to
+        celebrate it with the people we love most.
       </p>
     </Reveal>
   </div>

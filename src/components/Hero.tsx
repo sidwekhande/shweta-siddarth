@@ -20,25 +20,39 @@ export default function Hero() {
       animate="show"
       className="relative z-10 flex flex-col items-center px-6 text-center"
     >
-      <motion.p
-        variants={item}
-        className="font-sans text-xs tracking-[0.35em] uppercase text-leaf-700/80"
-      >
-        Together with their families
-      </motion.p>
-
       <motion.h1
         variants={item}
-        className="font-display mt-6 text-6xl italic text-ink sm:text-7xl md:text-8xl"
+        className="font-display text-6xl italic text-ink sm:text-7xl md:text-8xl"
       >
         Shweta <span className="text-gold-600">&amp;</span> Siddarth
       </motion.h1>
 
       <motion.p
         variants={item}
+        className="mt-6 font-sans text-xs tracking-[0.35em] uppercase text-leaf-700/80"
+      >
+        Along with their families
+      </motion.p>
+
+      <motion.p
+        variants={item}
+        className="mt-2 font-sans text-xs tracking-[0.35em] uppercase text-leaf-700/80"
+      >
+        joyfully invite you to their wedding
+      </motion.p>
+
+      <motion.p
+        variants={item}
         className="mt-8 font-sans text-sm tracking-[0.25em] uppercase text-ink/70"
       >
-        November 13&ndash;14, 2026 &middot; Harding Allen Estate &middot; Barre, Massachusetts
+        November 13&ndash;14, 2026
+      </motion.p>
+
+      <motion.p
+        variants={item}
+        className="mt-1 font-sans text-sm tracking-[0.25em] uppercase text-ink/70"
+      >
+        Harding Allen Estate &middot; Barre, Massachusetts
       </motion.p>
 
       <motion.a
