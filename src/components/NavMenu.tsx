@@ -10,7 +10,6 @@ const LINKS = [
   { href: '#details', label: 'Helpful Details' },
   { href: '#registry', label: 'Registry' },
   { href: '#countdown', label: 'Countdown' },
-  { href: '#rsvp', label: 'RSVP' },
 ];
 
 const ease = [0.22, 1, 0.36, 1] as const;

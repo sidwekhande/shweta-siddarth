@@ -54,14 +54,6 @@ export default function Hero() {
       >
         Harding Allen Estate &middot; Barre, Massachusetts
       </motion.p>
-
-      <motion.a
-        variants={item}
-        href="#rsvp"
-        className="mt-10 rounded-full border border-gold-500/60 px-8 py-3 font-sans text-xs tracking-[0.25em] uppercase text-gold-700 transition-colors hover:bg-gold-500/10"
-      >
-        RSVP
-      </motion.a>
     </motion.div>
   );
 }
